@@ -14,7 +14,7 @@ app.get("/campgrounds", function(req, res){
         {name: "Camp Potawotami", image: "https://photos.smugmug.com/photos/i-78dhF7q/0/M/i-78dhF7q-M.jpg"}    
     ]
     
-    res.render("campgrounds");
+    res.render("campgrounds", {campgrounds:campgrounds});
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){
