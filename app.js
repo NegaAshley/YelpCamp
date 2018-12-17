@@ -1,8 +1,10 @@
 var express = require("express");
 var app = express();
 
+app.set("view engine", "ejs");
+
 app.get("/",  function(req, res){
-    console.log("Root route accessed")
+    res.render("landing");
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){
