@@ -1,0 +1,28 @@
+{
+  "name": "yelpcamp",
+  "version": "1.0.0",
+  "description": "Yelp-like app for campgrounds",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NegaAshley/YelpCamp.git"
+  },
+  "keywords": [
+    "yelpcamp",
+    "yelp",
+    "express"
+  ],
+  "author": "Ashley Xu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NegaAshley/YelpCamp/issues"
+  },
+  "homepage": "https://github.com/NegaAshley/YelpCamp#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
+  }
+}
