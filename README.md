@@ -1,5 +1,5 @@
 # YelpCamp
-
+* Made with guidance from Colt Steele's Web Developer Bootcamp
 * Add Landing Page
 * Add Campgrounds Page that lists all campgrounds
 
