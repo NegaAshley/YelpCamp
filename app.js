@@ -20,8 +20,6 @@ app.get("/campgrounds", function(req, res){
 });
 
 app.post("/campgrounds", function(req, res){
-    // get data from form and add to campgrounds array
-    // redirect back to campgrounds page
     var newCampgroundName = req.body.newCampgroundName;
     var newCampgroundImage = req.body.newCampgroundImage;
     var newCampground = {name: newCampgroundName, image: newCampgroundImage};
