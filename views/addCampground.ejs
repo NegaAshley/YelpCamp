@@ -1,8 +1,10 @@
 <% include partials/header %>
 
+<h1>Create a New Campground</h1>
+
 <form action="/campgrounds" method="POST">
     <input type="text" name="newCampgroundName" placeholder="Campground Name">
-    <input type="file" name="newCampgroundImage" accept="image/*">
+    <input type="text" name="newCampgroundImage" placeholder="Image URL">
     <input type="submit">
 </form>
 
