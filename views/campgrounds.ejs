@@ -9,4 +9,10 @@
     </div>
 <% }); %>
 
+<form action="/campgrounds" method="POST">
+    <input type="text" name="newCampgroundName" placeholder="Campground Name">
+    <input type="file" name="newCampgroundImage" accept="image/*">
+    <input type="submit">
+</form>
+
 <% include partials/footer %>
