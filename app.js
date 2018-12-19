@@ -1,6 +1,7 @@
-var express = require("express");
-var app = express();
-var bodyParser = require("body-parser");
+var express     = require("express"),
+    app         = express(),
+    bodyParser  = require("body-parser"),
+    mongoose    = require("mongoose");
 var campgrounds = [
         {name: "Johnny Appleseed Campground", image: "https://i.pinimg.com/originals/4e/92/6f/4e926ffff71d80b23d19f6e77b7ba81c.jpg"},
         {name: "Bixler Lake", image: "https://50campfires.com/wp-content/uploads/2014/05/photo51-620x330.jpg"},    
