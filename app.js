@@ -26,26 +26,35 @@ var campgroundSchema = new mongoose.Schema({
 var Campground = mongoose.model("Campground", campgroundSchema);
 
 //Create a campground
-Campground.create(
-    {
-        name: "Johnny Appleseed Campground", 
-        image: "https://i.pinimg.com/originals/4e/92/6f/4e926ffff71d80b23d19f6e77b7ba81c.jpg"
-    }, function(err, campground){
-        if(err){
-            console.log("Error creating campground!");
-            console.log(err);
-        }else{
-            console.log("We just saved a campground to the database!");
-            console.log(campground);
-        }
-    });
+// Campground.create(
+//     {
+//         name: "Camp Potawotami", 
+//         image: "https://photos.smugmug.com/photos/i-78dhF7q/0/M/i-78dhF7q-M.jpg"
+//     }, function(err, campground){
+//         if(err){
+//             console.log("Error creating campground!");
+//             console.log(err);
+//         }else{
+//             console.log("We just saved a campground to the database!");
+//             console.log(campground);
+//         }
+//     }
+// );
 
 app.get("/",  function(req, res){
     res.render("landing");
 });
 
 app.get("/campgrounds", function(req, res){
-    res.render("campgrounds", {campgrounds:campgrounds});
+    //Get all campgrounds from database
+    Campground.find({}, function(err, allCampgrounds){
+        if(err){
+            console.log("Error getting campgrounds from database!");
+            console.log(err);
+        }else{
+            res.render("campgrounds", {campgrounds:allCampgrounds});
+        }
+    });
 });
 
 app.post("/campgrounds", function(req, res){
