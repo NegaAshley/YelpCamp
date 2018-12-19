@@ -24,3 +24,8 @@
 # Style the Navbar and Form
 * Add a navbar to all templates
 * Style the new campground form
+
+# Add Mongoose
+* Install and configure Mongoose
+* Setup campground model
+* Use campground model inside of our routes
