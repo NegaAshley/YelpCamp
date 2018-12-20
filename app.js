@@ -10,7 +10,8 @@ app.set("view engine", "ejs");
 
 var campgroundSchema = new mongoose.Schema({
     name: String,
-    image: String
+    image: String,
+    description: String
 });
 
 var Campground = mongoose.model("Campground", campgroundSchema);
@@ -19,6 +20,7 @@ app.get("/",  function(req, res){
     res.render("landing");
 });
 
+//Index - show all campgrounds
 app.get("/campgrounds", function(req, res){
     Campground.find({}, function(err, allCampgrounds){
         if(err){
@@ -30,10 +32,13 @@ app.get("/campgrounds", function(req, res){
     });
 });
 
+//Create - add new campground to database
 app.post("/campgrounds", function(req, res){
     var newCampgroundName = req.body.newCampgroundName;
     var newCampgroundImage = req.body.newCampgroundImage;
-    var newCampground = {name: newCampgroundName, image: newCampgroundImage};
+    var newCampgroundDescription = req.body.newCampgroundDescription;
+    var newCampground = {name: newCampgroundName, image: newCampgroundImage, 
+        description: newCampgroundDescription};
     Campground.create(newCampground, function(err, campground){
         if(err){
             console.log("Error creating campground!");
@@ -46,8 +51,14 @@ app.post("/campgrounds", function(req, res){
     });
 });
 
+//New - show form to create new campground
 app.get("/campgrounds/new", function(req, res){
     res.render("addCampground");
+});
+
+//Show - show details about specific campground
+app.get("/campgrounds/:id", function(req, res){
+    res.send("Campground detail will go here!")
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){
