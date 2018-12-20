@@ -58,7 +58,7 @@ app.get("/campgrounds/new", function(req, res){
 
 //Show - show details about specific campground
 app.get("/campgrounds/:id", function(req, res){
-    res.send("Campground detail will go here!")
+    res.render("show");
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){
