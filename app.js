@@ -58,7 +58,14 @@ app.get("/campgrounds/new", function(req, res){
 
 //Show - show details about specific campground
 app.get("/campgrounds/:id", function(req, res){
-    res.render("show");
+    Campground.findById(req.params.id, function(err, foundCampground){
+        if(err){
+            console.log("Error getting campground by ID!");
+            console.log(err);
+        }else{
+            res.render("show", {campground: foundCampground});
+        }
+    });
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){

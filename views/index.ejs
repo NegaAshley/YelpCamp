@@ -3,7 +3,10 @@
         <header class="jumbotron">
             <h1>Welcome to YelpCamp!</h1>
             <p>View our hand-picked campgrounds from all over the world</p>
-            <button type="button" class="btn btn-primary btn-lg" onclick="window.location.href = '/campgrounds/new';">Add New Campground</button>
+            <button type="button" class="btn btn-primary btn-lg" 
+            onclick="window.location.href = '/campgrounds/new';">
+                Add New Campground
+            </button>
         </header>
         
         <div class="row text-center" style="display:flex; flex-wrap:wrap;">
@@ -11,7 +14,15 @@
                 <div class="col-sm-6 col-md-3">
                     <div class="thumbnail">
                         <img src="<%= campground.image %>">
-                        <div class="caption"><%= campground.name %></div>
+                        <div class="caption">
+                            <h4><%= campground.name %></h4>
+                        </div>
+                        <p>
+                            <button type="button" class="btn btn-primary" 
+                                onclick="window.location.href = '/campgrounds/<%= campground._id %>';">
+                                More Info
+                            </button>
+                        </p>
                     </div>
                 </div>
             <% }); %>
