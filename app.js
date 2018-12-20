@@ -27,7 +27,7 @@ app.get("/campgrounds", function(req, res){
             console.log("Error getting campgrounds from database!");
             console.log(err);
         }else{
-            res.render("campgrounds", {campgrounds:allCampgrounds});
+            res.render("index", {campgrounds:allCampgrounds});
         }
     });
 });
