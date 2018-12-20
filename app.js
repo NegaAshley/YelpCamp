@@ -3,7 +3,7 @@ var express     = require("express"),
     bodyParser  = require("body-parser"),
     mongoose    = require("mongoose");
 
-mongoose.connect("mongodb://localhost/yelp_camp", {useNewUrlParser: true });
+mongoose.connect("mongodb://localhost:27017/yelp_camp", {useNewUrlParser: true });
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.set("view engine", "ejs");
@@ -41,9 +41,9 @@ app.post("/campgrounds", function(req, res){
         }else{
             console.log("Campground saved to database!");
             console.log(campground);
+            res.redirect("/campgrounds");
         }
     });
-    res.redirect("/campgrounds");
 });
 
 app.get("/campgrounds/new", function(req, res){

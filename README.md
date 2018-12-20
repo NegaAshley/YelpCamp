@@ -28,4 +28,9 @@
 # Add Mongoose
 * Install and configure Mongoose
 * Setup campground model
-* Use campground model inside of our routes
+* Use campground model inside of routes
+
+# Show Page
+* Add description to campground model
+* Show db.collection.drop()
+* Add a show route/templates
