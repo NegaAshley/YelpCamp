@@ -64,3 +64,7 @@
 # Comment Routes
 * NEW /campgrounds/:id/comments/new - GET
 * CREATE /campgrounds/:id/comments - POST
+
+# Style Show Campground Page
+* Add sidebar to show page
+* Display comments nicely
