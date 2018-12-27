@@ -47,3 +47,20 @@
 # Add the Comment model
 * Make errors go away
 * Display comments on campground show page
+
+# Comment New/Create
+* Nested routes
+* Add comment new and create routes
+* Add new comment form
+
+# Routes
+
+# Campground Routes
+* INDEX /campgrounds - GET
+* NEW /camgrounds/new - GET
+* CREATE /campgrounds - POST
+* SHOW /campgrounds/:id - GET
+
+# Comment Routes
+* NEW /campgrounds/:id/comments/new - GET
+* CREATE /campgrounds/:id/comments - POST
