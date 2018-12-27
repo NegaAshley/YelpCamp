@@ -55,11 +55,12 @@ app.get("/campgrounds/new", function(req, res){
 
 //Show - show details about specific campground
 app.get("/campgrounds/:id", function(req, res){
-    Campground.findById(req.params.id, function(err, foundCampground){
+    Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
         if(err){
             console.log("Error getting campground by ID!");
             console.log(err);
         }else{
+            console.log(foundCampground);
             res.render("show", {campground: foundCampground});
         }
     });
