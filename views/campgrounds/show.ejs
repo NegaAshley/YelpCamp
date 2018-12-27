@@ -28,15 +28,19 @@
                         Leave a Review
                     </button>
                 </div>
+                <% campground.comments.forEach(function(comment){ %>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <%= comment.author %>
+                            <span class="pull-right"><%= comment.created %></span>
+                            <p>
+                                <%= comment.text %>
+                            </p>
+                        </div>
+                    </div>
+                <% }); %>
             </div>
         </div>
     </div>
 </div>
-<% campground.comments.forEach(function(comment){ %>
-    <p>
-        <strong><%= comment.author %></strong>
-        - 
-        <%= comment.text %>
-    </p>
-<% }); %>
 <% include ../partials/footer %>
