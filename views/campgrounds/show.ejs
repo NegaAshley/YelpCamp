@@ -28,11 +28,12 @@
                         Leave a Review
                     </button>
                 </div>
+                <hr>
                 <% campground.comments.forEach(function(comment){ %>
                     <div class="row">
                         <div class="col-md-12">
                             <%= comment.author %>
-                            <span class="pull-right"><%= comment.created %></span>
+                            <span class="pull-right"><%= comment.created.toDateString() %></span>
                             <p>
                                 <%= comment.text %>
                             </p>
