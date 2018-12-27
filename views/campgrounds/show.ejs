@@ -17,14 +17,14 @@
                     <h4>
                         <a href=""><%= campground.name %></a>
                     </h4>
+                    <p>
+                        <%= campground.description %>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<p>
-    <%= campground.description %>
-</p>
 <button type="button" class="btn btn-success" onclick="window.location.href = '/campgrounds/<%= campground._id %>/comments/new';">
     Add New Comment
 </button>
