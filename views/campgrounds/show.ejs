@@ -12,7 +12,7 @@
         <div class="col-md-9">
             <div class="thumbnail">
                 <img class="img-responsive" src="<%= campground.image %>">
-                <div class="caption-full">
+                <div class="caption">
                     <h4 class="pull-right">$9.00/night</h4>
                     <h4>
                         <a href=""><%= campground.name %></a>
@@ -32,7 +32,7 @@
                 <% campground.comments.forEach(function(comment){ %>
                     <div class="row">
                         <div class="col-md-12">
-                            <%= comment.author %>
+                            <strong><%= comment.author %></strong>
                             <span class="pull-right"><%= comment.created.toDateString() %></span>
                             <p>
                                 <%= comment.text %>
