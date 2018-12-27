@@ -70,8 +70,43 @@ app.get("/campgrounds/:id", function(req, res){
 // Comments Routes
 // =================
 
+//New - show form to create new comment
 app.get("/campgrounds/:id/comments/new", function(req, res){
-    res.render("comments/new");
+    //Find campground by id
+    Campground.findById(req.params.id, function(err, campground){
+        if(err){
+            console.loge(err);
+        }else{
+            res.render("comments/new", {campground: campground});
+        }
+    });
+});
+
+//Create - add new comment ot database
+app.post("/campgrounds/:id/comments", function(req, res){
+   //Lookup campground using ID
+   Campground.findById(req.params.id, function(err, campground){
+       if(err){
+           console.log(err);
+           res.redirect("/campgrounds");
+       }else{
+          Comment.create(req.body.comment, function(err, comment){
+              if(err){
+                  console.log(err);
+              }else{
+                  campground.comments.push(comment);
+                  campground.save();
+                  res.redirect("/campgrounds/" + campground._id);
+              }
+          });
+       }
+   });
+   
+   //Create new comment
+   
+   //Connect new comments to campground
+   
+   //Redirect back to show page of campground commenting on
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){

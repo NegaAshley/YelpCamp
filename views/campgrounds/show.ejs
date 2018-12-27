@@ -6,7 +6,9 @@
     <p>
         <%= campground.description %>
     </p>
-    
+    <button type="button" class="btn btn-success" onclick="window.location.href = '/campgrounds/<%= campground._id %>/comments/new';">
+        Add New Comment
+    </button>
     <% campground.comments.forEach(function(comment){ %>
         <p>
             <strong><%= comment.author %></strong>
