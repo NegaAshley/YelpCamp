@@ -24,7 +24,7 @@ app.get("/campgrounds", function(req, res){
             console.log("Error getting campgrounds from database!");
             console.log(err);
         }else{
-            res.render("index", {campgrounds:allCampgrounds});
+            res.render("campgrounds/index", {campgrounds:allCampgrounds});
         }
     });
 });
@@ -50,7 +50,7 @@ app.post("/campgrounds", function(req, res){
 
 //New - show form to create new campground
 app.get("/campgrounds/new", function(req, res){
-    res.render("addCampground");
+    res.render("campgrounds/new");
 });
 
 //Show - show details about specific campground
@@ -61,17 +61,17 @@ app.get("/campgrounds/:id", function(req, res){
             console.log(err);
         }else{
             console.log(foundCampground);
-            res.render("show", {campground: foundCampground});
+            res.render("campgrounds/show", {campground: foundCampground});
         }
     });
 });
 
-// ========================================================
+// =================
 // Comments Routes
-// ========================================================
+// =================
 
 app.get("/campgrounds/:id/comments/new", function(req, res){
-    res.send("This will be the comment form!");
+    res.render("comments/new");
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){
