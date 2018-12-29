@@ -88,7 +88,7 @@ app.get("/campgrounds/:id", function(req, res){
 // =================
 
 //New - show form to create new comment
-app.get("/campgrounds/:id/comments/new", function(req, res){
+app.get("/campgrounds/:id/comments/new", isLoggedIn, function(req, res){
     //Find campground by id
     Campground.findById(req.params.id, function(err, campground){
         if(err){
@@ -99,8 +99,8 @@ app.get("/campgrounds/:id/comments/new", function(req, res){
     });
 });
 
-//Create - add new comment ot database
-app.post("/campgrounds/:id/comments", function(req, res){
+//Create - add new comment to database
+app.post("/campgrounds/:id/comments", isLoggedIn, function(req, res){
    //Lookup campground using ID
    Campground.findById(req.params.id, function(err, campground){
        if(err){
@@ -166,6 +166,14 @@ app.get("/logout", function(req, res){
     req.logout();
     res.redirect("/campgrounds");
 });
+
+//Function to be used as middleware to check for auth
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/login");
+}
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("YelpCamp server has started!");
