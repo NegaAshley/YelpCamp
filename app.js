@@ -28,6 +28,12 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+//Passes current user through all routes
+app.use(function(req, res, next){
+    res.locals.currentUser = req.user;
+    next();
+});
+
 //Routes
 
 app.get("/",  function(req, res){
@@ -41,6 +47,8 @@ app.get("/campgrounds", function(req, res){
             console.log("Error getting campgrounds from database!");
             console.log(err);
         }else{
+            //TODO Remove
+            //Pass through current user to campgrounds index
             res.render("campgrounds/index", {campgrounds:allCampgrounds});
         }
     });
