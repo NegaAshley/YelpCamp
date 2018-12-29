@@ -85,3 +85,9 @@
 # Auth Login
 * Add login routes
 * Add login template
+
+# Auth Logout/Navbar
+* Add logout route
+* Prevent user from adding a comment if not signed in
+* Add links to navbar
+* Show/hide auth links correctly
