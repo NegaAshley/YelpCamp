@@ -15,6 +15,21 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
 
+//Passport Configuration
+app.use(require("express-session")({
+    secret: "Meepo is the best cat ever!",
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+//Routes
+
 app.get("/",  function(req, res){
     res.render("landing");
 });
