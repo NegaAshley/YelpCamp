@@ -118,12 +118,15 @@ app.post("/campgrounds/:id/comments", function(req, res){
           });
        }
    });
-   
-   //Create new comment
-   
-   //Connect new comments to campground
-   
-   //Redirect back to show page of campground commenting on
+});
+
+//===========
+//Auth Routes
+//===========
+
+//Show register form
+app.get("/register", function(req, res){
+    res.render("register");
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){
