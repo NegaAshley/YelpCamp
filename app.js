@@ -129,7 +129,7 @@ app.get("/register", function(req, res){
     res.render("register");
 });
 
-//Signup logic
+//Sign up logic
 app.post("/register", function(req, res){
     var newUser = new User({username: req.body.username});
     User.register(newUser, req.body.password, function(err, user){
@@ -144,12 +144,12 @@ app.post("/register", function(req, res){
     });
 });
 
-//Show login form
+//Show log in form
 app.get("/login", function(req, res){
     res.render("login");
 });
 
-//Login logic
+//Log in logic
 app.post("/login", passport.authenticate("local", 
     {
         successRedirect: "/campgrounds", 
@@ -160,6 +160,12 @@ app.post("/login", passport.authenticate("local",
     res.send("Login logic here");
     }
 );
+
+//Log out route
+app.get("/logout", function(req, res){
+    req.logout();
+    res.redirect("/campgrounds");
+});
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("YelpCamp server has started!");
