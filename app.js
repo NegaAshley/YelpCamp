@@ -131,7 +131,17 @@ app.get("/register", function(req, res){
 
 //Signup logic
 app.post("/register", function(req, res){
-    res.send("Signing you up!");
+    var newUser = new User({username: req.body.username});
+    User.register(newUser, req.body.password, function(err, user){
+        if(err){
+            console.log("Error registering user!");
+            console.log(err);
+            return res.render("register");
+        }
+        passport.authenticate("local")(req, res, function(){
+            res.redirect("/campgrounds");
+        });
+    });
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){
