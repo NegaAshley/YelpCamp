@@ -149,6 +149,11 @@ app.get("/login", function(req, res){
     res.render("login");
 });
 
+//Login logic
+app.post("/login", function(req, res){
+    res.send("Login logic here");
+});
+
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("YelpCamp server has started!");
 });
