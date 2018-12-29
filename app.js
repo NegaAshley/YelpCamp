@@ -150,9 +150,16 @@ app.get("/login", function(req, res){
 });
 
 //Login logic
-app.post("/login", function(req, res){
+app.post("/login", passport.authenticate("local", 
+    {
+        successRedirect: "/campgrounds", 
+        failureRedirect: "/login"
+        
+    }),
+    function(req, res){
     res.send("Login logic here");
-});
+    }
+);
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("YelpCamp server has started!");
