@@ -12,7 +12,7 @@ var express         = require("express"),
     commentRoutes   = require("./routes/comments"),
     indexRoutes     = require("./routes/index");
 
-seedDB();
+// seedDB(); //Seed the database
 mongoose.connect("mongodb://localhost:27017/yelp_camp", {useNewUrlParser: true });
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));

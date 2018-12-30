@@ -38,11 +38,11 @@ function seedDB(){
         }else{
             console.log("Removed campgrounds!");
             Comment.remove({}, function(err){
-               if(err){
-                   console.log(err);
-               }else{
-                   console.log("Removed comments!");
-               }
+              if(err){
+                  console.log(err);
+              }else{
+                  console.log("Removed comments!");
+              }
             });
             data.forEach(function(seed){
                 Campground.create(seed, function(err, campground){
