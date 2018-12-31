@@ -17,17 +17,23 @@ router.get("/", function(req, res){
 });
 
 //Create - add new campground to database
-router.post("/", function(req, res){
+router.post("/", isLoggedIn, function(req, res){
+    //Add username and id to author
+    var newAuthor = {
+        id: req.user._id,
+        username: req.user.username
+    };
     var newCampgroundName = req.body.newCampgroundName;
     var newCampgroundImage = req.body.newCampgroundImage;
     var newCampgroundDescription = req.body.newCampgroundDescription;
     var newCampground = {name: newCampgroundName, image: newCampgroundImage, 
-        description: newCampgroundDescription};
+        description: newCampgroundDescription, author: newAuthor};
     Campground.create(newCampground, function(err, campground){
         if(err){
             console.log("Error creating campground!");
             console.log(err);
         }else{
+            campground.save();
             console.log("Campground saved to database!");
             console.log(campground);
             res.redirect("/campgrounds");
@@ -36,7 +42,7 @@ router.post("/", function(req, res){
 });
 
 //New - show form to create new campground
-router.get("/new", function(req, res){
+router.get("/new", isLoggedIn, function(req, res){
     res.render("campgrounds/new");
 });
 
@@ -52,5 +58,13 @@ router.get("/:id", function(req, res){
         }
     });
 });
+
+//Function to be used as middleware to check for auth
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/login");
+}
 
 module.exports = router;
