@@ -73,6 +73,18 @@ router.get("/:id/edit", function(req, res){
 });
 
 //Update - allows update of campground
+router.put("/:id", function(req, res){
+    //Find and update correct campground
+    Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedCampground){
+       if(err){
+           console.log("Error updating campground!");
+           console.log(err);
+           res.redirect("/campgrounds");
+       }else{
+           res.redirect("/campgrounds/" + req.params.id);
+       } 
+    });
+});
 
 //Function to be used as middleware to check for auth
 function isLoggedIn(req, res, next){
