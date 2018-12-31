@@ -23,23 +23,25 @@ router.post("/", isLoggedIn, function(req, res){
            console.log(err);
            res.redirect("/campgrounds");
        }else{
-          Comment.create(req.body.comment, function(err, comment){
-              if(err){
-                  console.log(err);
-              }else{
-                  //Add username and id to comment
-                  comment.author.id = req.user._id;
-                  comment.author.username = req.user.username;
-                  //Save comment
-                  comment.save();
-                  campground.comments.push(comment);
-                  campground.save();
-                  console.log(comment);
-                  res.redirect("/campgrounds/" + campground._id);
-              }
-          });
-       }
-   });
+           var newAuthor = {
+               id: req.user._id,
+               username: req.user.username
+           };
+           var newComment = {text: req.body.comment, author: newAuthor};
+            Comment.create(newComment, function(err, comment){
+                if(err){
+                    console.log(err);
+                }else{
+                    //Save comment
+                    comment.save();
+                    campground.comments.push(comment);
+                    campground.save();
+                    console.log(comment);
+                    res.redirect("/campgrounds/" + campground._id);
+                }
+            });
+        }
+    });
 });
 
 //Function to be used as middleware to check for auth
