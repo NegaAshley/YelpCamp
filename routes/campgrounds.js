@@ -81,6 +81,19 @@ router.put("/:id", checkCampgroundOwnership, function(req, res){
     });
 });
 
+//Destroy campground route
+router.delete("/:id", function(req, res){
+    Campground.findByIdAndRemove(req.params.id, function(err){
+        if(err){
+            console.log("Error deleting campground!");
+            console.log(err);
+            res.redirect("/campgrounds");
+        }else{
+            res.redirect("/campgrounds");
+        }
+    });
+});
+
 //Function to be used as middleware to check for auth
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
