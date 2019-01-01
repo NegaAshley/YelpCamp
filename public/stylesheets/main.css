@@ -1,3 +1,7 @@
+#deleteForm {
+    display: inline;
+}
+
 .thumbnail img{
     width: 100%;
 }
