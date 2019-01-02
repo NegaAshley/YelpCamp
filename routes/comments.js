@@ -59,7 +59,15 @@ router.get("/:comment_id/edit", function(req, res){
 
 //Update - allows update of campground
 router.put("/:comment_id", function(req, res){
-    res.send("You hit the update route for comment!");
+    Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment){
+        if(err){
+            console.log("Error updating comment!");
+            console.log(err);
+            res.redirect("back");
+        }else{
+            res.redirect("/campgrounds/" + req.params.id);
+        }
+    });
 });
 
 //Function to be used as middleware to check for auth
