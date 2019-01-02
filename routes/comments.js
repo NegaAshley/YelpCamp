@@ -44,6 +44,11 @@ router.post("/", isLoggedIn, function(req, res){
     });
 });
 
+//Edit - shows form to edit comment
+router.get("/:comments_id/edit", function(req, res){
+    res.send("Edit route for comment")
+});
+
 //Function to be used as middleware to check for auth
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
