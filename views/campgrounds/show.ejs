@@ -46,7 +46,10 @@
                             <p>
                                 <%= comment.text %>
                             </p>
-                            <button class="btn btn-warning" onclick="window.location.href = '/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit'">Edit</button>
+                            <button class="btn btn-xs btn-warning" 
+                                onclick="window.location.href = '/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit'">
+                                Edit
+                            </button>
                         </div>
                     </div>
                 <% }); %>
