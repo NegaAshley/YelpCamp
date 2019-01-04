@@ -70,6 +70,12 @@ router.put("/:comment_id", function(req, res){
     });
 });
 
+//Destroy - destroy comment
+router.delete("/:comment_id", function(req, res){
+   res.send("Destroy comment route!"); 
+});
+
+
 //Function to be used as middleware to check for auth
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){

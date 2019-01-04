@@ -50,6 +50,9 @@
                                 onclick="window.location.href = '/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit'">
                                 Edit
                             </button>
+                            <form id="destroyForm" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                <input type="submit" class="submit btn btn-xs btn-danger" value="Delete">
+                            </form>
                         </div>
                     </div>
                 <% }); %>

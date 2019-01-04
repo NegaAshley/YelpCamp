@@ -2,6 +2,10 @@
     display: inline;
 }
 
+#destroyForm {
+    display: inline;
+}
+
 .thumbnail img{
     width: 100%;
 }
